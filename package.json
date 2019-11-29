@@ -1,0 +1,75 @@
+{
+  "name": "file-vault",
+  "displayName": "File Vault",
+  "icon": "logo.png",
+  "publisher": "zaguini",
+  "description": "Quickly grab your favorite files -- from Github!",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.39.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaguiini/file-vault.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.fileVault"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "File Vault",
+      "properties": {
+        "fileVault.repositories": {
+          "type": "array",
+          "description": "The repositories to fetch the files",
+          "items": {
+            "type": "string",
+            "description": "The repository URL"
+          }
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "extension.fileVault",
+        "title": "Download files from vault"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "extension.fileVault"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
+    "@types/parse-github-url": "^1.0.0",
+    "@types/vscode": "^1.39.2",
+    "glob": "^7.1.5",
+    "mocha": "^6.2.2",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4",
+    "vscode-test": "^1.2.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "parse-github-url": "^1.0.2"
+  }
+}
