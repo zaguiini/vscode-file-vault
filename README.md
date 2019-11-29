@@ -1,6 +1,6 @@
-# file-vault
+# vscode-file-vault
 
-Quickly grab your favorite files into any VSCode folder -- from Github!
+Quickly grab your favorite files directly from Github!
 
 ## Requirements
 

@@ -1,16 +1,16 @@
 {
-  "name": "file-vault",
+  "name": "vscode-file-vault",
   "displayName": "File Vault",
   "icon": "logo.png",
   "publisher": "zaguini",
-  "description": "Quickly grab your favorite files into any VSCode folder -- from Github!",
+  "description": "Quickly grab your favorite files directly from Github!",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.39.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zaguiini/file-vault.git"
+    "url": "https://github.com/zaguiini/vscode-file-vault.git"
   },
   "categories": [
     "Other"
