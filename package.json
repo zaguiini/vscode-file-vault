@@ -3,7 +3,7 @@
   "displayName": "File Vault",
   "icon": "logo.png",
   "publisher": "zaguini",
-  "description": "Quickly grab your favorite files -- from Github!",
+  "description": "Quickly grab your favorite files into any VSCode folder -- from Github!",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.39.2"
