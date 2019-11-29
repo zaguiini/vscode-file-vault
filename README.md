@@ -25,6 +25,6 @@ After copying, please file an issue with general information about your environm
 
 MIT
 
-### Rights
+## Rights
 
-bank vault icon PNG Designed By IYIKON from <a href="https://pngtree.com/">Pngtree.com</a>
+- bank vault icon PNG Designed By IYIKON from <a href="https://pngtree.com/">Pngtree.com</a>
