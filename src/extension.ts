@@ -1,12 +1,6 @@
-import { AxiosResponse } from 'axios'
 import * as vscode from 'vscode'
 import parseGitHubUrl from 'parse-github-url'
-import {
-  getRepositoryFiles,
-  downloadFiles,
-  writeFiles,
-  RepositoryFiles,
-} from './utils'
+import { getRepositoryFiles, downloadFiles, writeFiles } from './utils'
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -43,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
         return
       }
 
-      let possibleFiles: RepositoryFiles = {}
+      let possibleFiles = {}
 
       try {
         possibleFiles = await vscode.window.withProgress(
@@ -77,7 +71,7 @@ export function activate(context: vscode.ExtensionContext) {
         return
       }
 
-      let downloadedFiles: AxiosResponse<string>[]
+      let downloadedFiles
 
       try {
         downloadedFiles = await vscode.window.withProgress(

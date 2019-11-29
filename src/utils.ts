@@ -1,9 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
-import { writeFile as writeFileCb } from 'fs'
+import { createWriteStream } from 'fs'
 import { resolve, basename } from 'path'
-import { promisify } from 'util'
-
-const writeFile = promisify(writeFileCb)
+import { Stream } from 'stream'
 
 interface GetRepositoryFiles {
   user: string
@@ -43,19 +41,22 @@ interface DownloadFiles {
 }
 
 export const downloadFiles = ({ possibleFiles, chosenFiles }: DownloadFiles) =>
-  Promise.all(chosenFiles.map((file) => axios.get<string>(possibleFiles[file])))
+  Promise.all(
+    chosenFiles.map((file) =>
+      axios.get<Stream>(possibleFiles[file], { responseType: 'stream' })
+    )
+  )
 
 interface WriteFiles {
-  files: AxiosResponse<string>[]
+  files: AxiosResponse<Stream>[]
   path: string
 }
 
 export const writeFiles = async ({ files, path }: WriteFiles) => {
   Promise.all(
-    files.map(({ data, request }) => {
-      const filePath = resolve(path, basename(request.path))
-
-      return writeFile(filePath, data)
+    files.map((file) => {
+      const filePath = resolve(path, basename(file.request.path))
+      return file.data.pipe(createWriteStream(filePath))
     })
   )
 }
